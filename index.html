@@ -68,4 +68,32 @@
 <script src="js/services/api.js"></script>
 <script src="js/common.js"></script>-->
 <script src="js/all.js"></script>
+<script type="text/javascript">
+  var WeixinApi = (function () {
+
+    /* 这里省略了一堆代码……下面直接看调用接口 */
+    return {
+      ready           :wxJsBridgeReady,
+      shareToTimeline :weixinShareTimeline,
+      shareToWeibo    :weixinShareWeibo,
+      shareToFriend   :weixinSendAppMessage,
+      showOptionMenu  :showOptionMenu,
+      hideOptionMenu  :hideOptionMenu,
+      showToolbar     :showToolbar,
+      hideToolbar     :hideToolbar,
+      getNetworkType  :getNetworkType,
+      imagePreview    :imagePreview
+    };
+
+  });
+
+  // 所有功能必须包含在 WeixinApi.ready 中进行
+  WeixinApi.ready(function(Api){
+    // 隐藏右上角popup菜单入口
+    Api.hideOptionMenu();
+
+    // 隐藏浏览器下方的工具栏
+    Api.hideToolbar();
+  });
+</script>
 </html>

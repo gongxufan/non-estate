@@ -1,0 +1,20 @@
+<ion-view view-title="区域选择">
+  <ion-content>
+    <div ng-repeat="area in areas">
+
+      <div class="row">
+        <div class="col col-33 text-left " style="padding-left: 30px">
+            <img class="areaIcon" ng-src="{{areaIco}}"/>{{area.areaName}}
+        </div>
+      </div>
+
+      <div class="row" ng-repeat="city in area.cities">
+        <div class="col col-33 text-left" ng-repeat="city2 in city" style="padding-left: 30px">
+          <button ng-click="goToIndex('{{city2}}')" class="button button-small button-outline button-positive">{{city2}}</button>
+        </div>
+      </div>
+      <div class="divider"></div>
+
+    </div>
+  </ion-content>
+</ion-view>

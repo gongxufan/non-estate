@@ -1,0 +1,150 @@
+/* Empty. Add your own CSS if you like */
+.icon-defined-home {
+  background-image: url("../img/footIco1.png");
+  background-repeat: no-repeat;
+  padding-top: 7px;
+  width: 26px;
+}
+
+.icon-defined-preOrder {
+  background-image: url("../img/footIco2.png");
+  background-repeat: no-repeat;
+  width: 23px;
+}
+
+.icon-defined-announce {
+  background-image: url("../img/footIco3.png");
+  background-repeat: no-repeat;
+  width: 22px;
+}
+
+.icon-defined-mine {
+  background-image: url("../img/footIco4.png");
+  background-repeat: no-repeat;
+  width: 21px;
+}
+
+.banner {
+  width: 100%;
+  height: 35vh;
+  background-size: auto 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.contentBtn {
+  width: 80%;
+  height: 100px;
+  line-height: 100px;
+  position: relative;
+  margin: auto;
+  margin-top: 10vw;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, .2);
+  background: #fff url(../img/proessGuideBtnBg.png) repeat;
+  text-align: center;
+}
+
+.contentBtn img {
+  width: 75px;
+  height: 100px;
+}
+
+.content {
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+}
+
+.content p:first-of-type {
+  line-height: 30px;
+  color: #333;
+}
+
+.content p {
+  padding: 10px;
+  color: #666;
+}
+
+p {
+  margin: 0 0 10px;
+}
+
+.content p:first-of-type img {
+  width: 15px;
+  height: auto;
+  margin-right: 10px;
+}
+
+img {
+  vertical-align: middle;
+  border: 0;
+}
+
+.areaIcon {
+  width: 15px;
+  height: auto;
+  margin-right: 10px;
+  vertical-align: middle;
+  border: 0;
+
+}
+
+.divider {
+  border-bottom: 1px solid #dddddd;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.dividerLine{
+  border-bottom: 1px solid #dddddd;
+  margin: 0;
+  padding: 0;
+}
+
+.leftArrow, .rightArrow, .topArrow, .bottomArrow {
+  width: 12px;
+  height: 12px;
+  margin-top: 14px;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+}
+
+.leftArrow {
+  transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+}
+
+.rightArrow {
+  transform: rotate(-135deg);
+  -ms-transform: rotate(-135deg);
+  -moz-transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+  /* float: right; */
+  border-color: #666;
+  margin-top: 16px;
+  border-width: 1px;
+}
+
+.topArrow {
+  transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
+}
+
+.bottomArrow {
+  transform: rotate(225deg);
+  -ms-transform: rotate(225deg);
+  -moz-transform: rotate(225deg);
+  -webkit-transform: rotate(225deg);
+  -o-transform: rotate(225deg);
+}
+.title {
+  font-size: 14px;
+  margin: 8px 5px;
+  color: #8C8787;
+}

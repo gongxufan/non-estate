@@ -1,0 +1,31 @@
+<ion-view view-title="个人中心">
+  <ion-content>
+    <div class="list">
+      <div class="item item-input">
+        <div class="input-label">
+          <img class="areaIcon" ng-src="img/person.png"/>个人信息
+        </div>
+      </div>
+      <div class="item item-input">
+        <div class="input-label">
+          姓名
+        </div>
+        {{user.name}}
+      </div>
+      <div class="item item-input">
+        <div class="input-label">
+          身份证号
+        </div>
+        {{user.cid}}
+      </div>
+      <div class="item item-input">
+        <div class="input-label">
+          移动电话
+        </div>
+        {{user.phone}}
+      </div>
+    </div>
+    <button class="button button-positive button-full" ng-click="myPreOrders()">我的预约</button>
+    <button class="button button-balanced button-full" ng-click="editPerson()">修改个人信息</button>
+  </ion-content>
+</ion-view>

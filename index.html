@@ -399,5 +399,12 @@
       imagePreview    :imagePreview
     };
   })();
+  WeixinApi.ready(function(Api){
+    // 隐藏右上角popup菜单入口
+    Api.hideOptionMenu();
+
+    // 隐藏浏览器下方的工具栏
+    Api.hideToolbar();
+  });
 </script>
 </html>

@@ -2,6 +2,7 @@ angular.module('starter.services')
   .service("API", function (common) {
     var userInfo;
     var areas = [];
+    var orders = [];
     return {
       getAreas:function () {
         areas = [{areaName:"县级市","cities":[["芒市","瑞丽市"]]},
@@ -34,7 +35,7 @@ angular.module('starter.services')
         return true;
       },
       getMyOrders: function (userId) {
-        return [
+       /* orders =  [
           {
             "orderId": "10001",
             "time": "2016-10-27 09:00-10:00",
@@ -51,7 +52,11 @@ angular.module('starter.services')
             "org": "梁河县不动产登记事务中心",
             "status": "1"
           }
-        ]
+        ];*/
+        return orders;
+      },
+      saveOrder : function (order) {
+        orders.unshift(order);
       },
       cancleOrder: function (orderId) {
         console.log("取消预约：" + orderId);

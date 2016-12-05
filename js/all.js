@@ -434,13 +434,37 @@ angular.module('starter.controllers').controller('PreOrderCtrl',
         $scope.subBizType = [];
         $scope.bizDate = API.getBizDate();
         $scope.bizTime = [];
+        $scope.area = $rootScope.selectedArea + "不动产登记中心";
+        $scope.agreementInfo = {
+          "pos":"",
+          "agreementNum":""
+        }
       });
-
       $scope.selectBizType = function (type) {
+        $scope.selectedType = type.typeName;
         $scope.subBizType = API.getSubBizType(type.typeId)
       }
+      $scope.selectSubType = function (subType) {
+        $scope.subType = $scope.selectedType + "("+ subType +")";
+      }
       $scope.selectDate = function (date) {
+        $scope.selectedDate = date;
         $scope.bizTime = API.getBizTime(date);
+      }
+      $scope.selectTime = function (time) {
+        $scope.selectedTime = $scope.selectedDate + " " + time.substring(0,time.indexOf("("));
+      }
+      $scope.confirmPreOrder = function () {
+        var order = {
+          "orderId": "10002",
+          "time": $scope.selectedTime,
+          "position": $scope.agreementInfo.pos,
+          "bizType": $scope.subType,
+          "org": $scope.area,
+          "status": "0"
+        };
+        API.saveOrder(order);
+        $state.go('tab.myPreOrder');
       }
     }
   });
@@ -474,6 +498,7 @@ angular.module('starter.services')
   .service("API", function (common) {
     var userInfo;
     var areas = [];
+    var orders = [];
     return {
       getAreas:function () {
         areas = [{areaName:"县级市","cities":[["芒市","瑞丽市"]]},
@@ -506,24 +531,28 @@ angular.module('starter.services')
         return true;
       },
       getMyOrders: function (userId) {
-        return [
-          {
-            "orderId": "10001",
-            "time": "2016-10-27 09:00-10:00",
-            "position": "芒市",
-            "bizType": "新建商品房买卖(新房办房本)",
-            "org": "芒市不动产登记事务中心",
-            "status": "0"
-          },
-          {
-            "orderId": "10002",
-            "time": "2016-10-27 09:00-10:00",
-            "position": "梁河县",
-            "bizType": "新建商品房买卖(新房办房本)",
-            "org": "梁河县不动产登记事务中心",
-            "status": "1"
-          }
-        ]
+        /* orders =  [
+         {
+         "orderId": "10001",
+         "time": "2016-10-27 09:00-10:00",
+         "position": "芒市",
+         "bizType": "新建商品房买卖(新房办房本)",
+         "org": "芒市不动产登记事务中心",
+         "status": "0"
+         },
+         {
+         "orderId": "10002",
+         "time": "2016-10-27 09:00-10:00",
+         "position": "梁河县",
+         "bizType": "新建商品房买卖(新房办房本)",
+         "org": "梁河县不动产登记事务中心",
+         "status": "1"
+         }
+         ];*/
+        return orders;
+      },
+      saveOrder : function (order) {
+        orders.unshift(order);
       },
       cancleOrder: function (orderId) {
         console.log("取消预约：" + orderId);

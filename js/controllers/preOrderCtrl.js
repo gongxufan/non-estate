@@ -26,19 +26,43 @@ angular.module('starter.controllers').controller('PreOrderCtrl',
     }
     //进入登记主界面
     if ($location.url() == "/tab/preOrder") {
-        $scope.$on('$ionicView.enter', function (e) {
-          $scope.user = API.getUserInfo();
-          $scope.bizType = API.getBizType();
-          $scope.subBizType = [];
-          $scope.bizDate = API.getBizDate();
-          $scope.bizTime = [];
-        });
-
+      $scope.$on('$ionicView.enter', function (e) {
+        $scope.user = API.getUserInfo();
+        $scope.bizType = API.getBizType();
+        $scope.subBizType = [];
+        $scope.bizDate = API.getBizDate();
+        $scope.bizTime = [];
+        $scope.area = $rootScope.selectedArea + "不动产登记中心";
+        $scope.agreementInfo = {
+          "pos":"",
+          "agreementNum":""
+        }
+      });
       $scope.selectBizType = function (type) {
+        $scope.selectedType = type.typeName;
         $scope.subBizType = API.getSubBizType(type.typeId)
       }
+      $scope.selectSubType = function (subType) {
+        $scope.subType = $scope.selectedType + "("+ subType +")";
+      }
       $scope.selectDate = function (date) {
+        $scope.selectedDate = date;
         $scope.bizTime = API.getBizTime(date);
+      }
+      $scope.selectTime = function (time) {
+        $scope.selectedTime = $scope.selectedDate + " " + time.substring(0,time.indexOf("("));
+      }
+      $scope.confirmPreOrder = function () {
+        var order = {
+          "orderId": "10002",
+          "time": $scope.selectedTime,
+          "position": $scope.agreementInfo.pos,
+          "bizType": $scope.subType,
+          "org": $scope.area,
+          "status": "0"
+        };
+        API.saveOrder(order);
+        $state.go('tab.myPreOrder');
       }
     }
   });

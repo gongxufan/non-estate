@@ -318,7 +318,7 @@ angular.module('starter.controllers').controller('AnnounceCtrl',
  * 2、确定修改跳转到预约界面，需要判断用户是否已经选择好预约区域
  */
 angular.module('starter.controllers').controller('EditPersonCtrl',
-  function ($rootScope,$scope, API, $state) {
+  function ($rootScope,$scope, API, $state,$document) {
     $scope.user = API.getUserInfo();
     if (!$scope.user) {
       $scope.user = {
@@ -327,6 +327,9 @@ angular.module('starter.controllers').controller('EditPersonCtrl',
         phone: ""
       }
       $scope.confirmEdit = function () {
+        angular.forEach($document.find("input"),function (node) {
+            node.blur();
+        })
         if(!API.saveUserInfo($scope.user))
           return;
         if($rootScope.selectedArea)

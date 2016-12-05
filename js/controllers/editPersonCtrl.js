@@ -13,6 +13,10 @@ angular.module('starter.controllers').controller('EditPersonCtrl',
         phone: ""
       }
       $scope.confirmEdit = function () {
+        //确认时先让所有输入框失去焦点，触发模型更新
+        angular.forEach($document.find("input"),function (node) {
+          node.blur();
+        })
         if(!API.saveUserInfo($scope.user))
           return;
         if($rootScope.selectedArea)

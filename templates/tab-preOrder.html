@@ -1,0 +1,117 @@
+<ion-view view-title="预约登记">
+  <ion-content scrollbar-y="false">
+    <div class="list">
+      <div class="item item-input">
+        <div class="input-label">
+          <img class="areaIcon" ng-src="img/titleIco2.png"/>预约
+        </div>
+      </div>
+
+      <div class="item item-input item-select">
+        <div class="input-label">
+          办理机构<font color="red">*</font>
+        </div>
+        <select>
+          <option>{{::area}}</option>
+        </select>
+      </div>
+
+      <div class="item item-input item-select">
+        <div class="input-label">
+          业务类型<font color="red">*</font>
+        </div>
+        <select ng-change="selectBizType(selectedType)" ng-model="selectedType" ng-options="t.typeName   for t in bizType">
+          <option value="">请选择业务类型</option>
+        </select>
+
+      </div>
+
+      <div class="item item-input item-select">
+        <div class="input-label">
+          子业务类型<font color="red">*</font>
+        </div>
+        <select ng-change="selectSubType(selectedSubType)" ng-model="selectedSubType" ng-options="s for s in subBizType">
+          <option value="">请选择</option>
+        </select>
+      </div>
+
+      <div class="item item-input item-select">
+        <div class="input-label">
+          办理日期<font color="red">*</font>
+        </div>
+        <select ng-change="selectDate(selectedBizDate)" ng-model="selectedBizDate" ng-options="d for d in bizDate">
+          <option value="">请选择办理时间</option>
+        </select>
+      </div>
+
+
+      <div class="item item-input item-select">
+        <div class="input-label">
+          办理时间段<font color="red">*</font>
+        </div>
+        <select ng-change="selectTime(selectedBizTime)"  ng-model="selectedBizTime" ng-options="t for t in bizTime">
+          <option value="">请选择办理时间段</option>
+        </select>
+      </div>
+
+      <div class="item item-divider">
+      </div>
+
+      <div class="list">
+        <div class="item item-input">
+          <div class="input-label">
+            <img class="areaIcon" ng-src="img/person.png"/>个人信息
+          </div>
+        </div>
+        <div class="item item-input">
+          <div class="input-label">
+            姓名<font color="red">*</font>
+          </div>
+          {{::user.name}}
+        </div>
+        <div class="item item-input">
+          <div class="input-label">
+            身份证号<font color="red">*</font>
+          </div>
+          {{::user.cid}}
+        </div>
+        <div class="item item-input">
+          <div class="input-label">
+            移动电话<font color="red">*</font>
+          </div>
+          {{::user.phone}}
+        </div>
+        <div class="item item-input item-select">
+          <div class="input-label">
+            所属行政区<font color="red">*</font>
+          </div>
+          <select>
+            <option>{{::selectedArea}}</option>
+          </select>
+        </div>
+
+        <div class="item item-input">
+          <span class="input-label">产权证/合同号<font color="red">*</font></span>
+          <input ng-model="agreementInfo.agreementNum" type="text" placeholder="请输入产权证号或者合同号">
+        </div>
+        <div class="item item-input">
+          <span class="input-label">不动产坐落<font color="red">*</font></span>
+          <input type="text" ng-model="agreementInfo.pos" placeholder="请输入不动产坐落">
+        </div>
+        <div class="item ">
+          <span style="display: inline-block" class="input-label">验证码<font color="red">*</font></span>
+          <input style="display: inline-block;width: 30%" type="text" placeholder="验证码">
+          <img style="display: inline-block" src="img/code.png"/>
+        </div>
+      </div>
+    </div>
+    </div>
+
+     <div style=" padding: 10px;color: #666;margin: 0 0 10px;">
+       <p>提示
+         <br/>
+         一个身份证号码，一天只能预约一次，办理前一天下午的16:00前可以取消。</p>
+    </div>
+    <button class="button button-full button-positive" ng-click="confirmPreOrder()">确定</button>
+  </ion-content>
+</ion-view>

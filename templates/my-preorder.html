@@ -1,0 +1,27 @@
+<ion-view view-title="我的预约">
+  <ion-content scrollbar-y="false">
+    <div class="content">
+      <div class="card" ng-repeat="order in orders">
+        <div class="item item-divider" ng-if="order.status == '0'">
+          状态： 待审核
+        </div>
+        <div class="item item-divider" ng-if="order.status == '1'">
+          状态： 已取消
+        </div>
+        <div class="item item-text-wrap">
+          <p>预约时间：{{order.time}}</p>
+
+          <p>不动产坐落：{{order.position}}</p>
+
+          <p>业务类型：{{order.bizType}}</p>
+
+          <p>办理机构：{{order.org}}</p>
+          <div class="row" ng-if="order.status == '0'">
+            <div class="col"></div>
+            <div class="col text-right"><button ng-click="cancleOrder(order)" class="button button-small button-outline button-positive">取 消</button></div>
+          </div>
+
+        </div>
+      </div>
+  </ion-content>
+</ion-view>
